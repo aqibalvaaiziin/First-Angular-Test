@@ -1,0 +1,24 @@
+<div *ngIf="customer" class=" container">
+  <h1>{{ customer.name | capitalize }} Orders</h1>
+
+  <table class="table table-hover" *ngFor="let order of orders" style="margin-top: 50px">
+    <thead class=" thead-dark">
+      <th>Product Name</th>
+      <th>Product Cost</th>
+      <th>Qty</th>
+      <th>SubTotal</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let orderItem of order.orderItems">
+        <td>{{ orderItem.productName }}</td>
+        <td>{{ orderItem.itemCost | currency:'USD':'symbol' }}</td>
+        <td>{{ orderItem.qty}}</td>
+        <td>{{ orderItem.subTotal | currency:'USD':'symbol' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="!customer">
+  No customer found
+</div>
+<br />
